@@ -22,7 +22,7 @@ function candyReducer(state = [], action) {
     
   switch (action.type) {
     case 'ADD_CANDY':
-  return  container.innerHTML += `${[state.candy, action.candy]}<br>`
+  return [...state, action.candy]
     default:
       return state;
   }
@@ -30,10 +30,12 @@ function candyReducer(state = [], action) {
 
 function render() {
   if(store.getState()) { 
-    let cont = store.getState().split().join('');
-   container.innerHTML = cont 
-    cont.replace( /,/g, "" );
-      
+  let cont = store.getState().join(', ');
+
+  container.innerHTML = cont 
+   console.log(cont)
+
+ // debugger;
   } else {
     throw new Error("the store's state has not been defined yet")
   }
