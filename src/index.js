@@ -29,13 +29,15 @@ function candyReducer(state = [], action) {
 }
 
 function render() {
-debugger;
   if(store.getState()) { 
-    store.getState().replace( /,/g, "" ); 
-    container.textContent = store.getState().join(' ')  
+    let cont = store.getState().split().join('');
+   container.innerHTML = cont 
+    cont.replace( /,/g, "" );
+      
   } else {
     throw new Error("the store's state has not been defined yet")
   }
+
 };
 
 
